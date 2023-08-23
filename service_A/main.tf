@@ -47,7 +47,7 @@ resource "azurerm_monitor_metric_alert" "queue_alerts" {
     metric_namespace = "Microsoft.ServiceBus/namespaces"
     metric_name      = each.value.dead_lettering_on_message_expiration ? "DeadletteredMessages" : "Messages"
     aggregation      = "Average"
-    operator         = "GreaterThanOrEqual"
+    operator      =  each.value.alarm.operator
     threshold        = each.value.alarm.message_threshold
 
     dimension {
