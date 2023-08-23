@@ -12,7 +12,7 @@ Follow along these articles:
 
 ```console
 terraform init
-terraform plan -var="location=westus" -var="prefix=team1"
-terraform apply -var="location=westus" -var="prefix=team1"
+terraform plan
+terraform apply
 terraform destroy
 ```
