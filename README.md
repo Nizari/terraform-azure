@@ -5,6 +5,9 @@
 ```console
 terraform init
 terraform plan
+# format files
+terraform fmt
+terraform validate
 terraform apply
 terraform destroy
 ```

@@ -4,3 +4,8 @@
 /.terraform.lock.hcl
 /.terraform
 .DS_Store
+*.hcl
+.terraform
+.terraform.tfstate.lock.info
+*.tfstate
+*.backup
