@@ -1,6 +1,8 @@
 # Terraform Azure
 
-## Usefull commands
+## General commands
+
+### Terraform
 
 ```console
 terraform init
@@ -12,15 +14,28 @@ terraform apply
 terraform destroy
 ```
 
+### Azure
+
 ```console
 az account set --subscription "{{SUBSCRIPTION_ID}}"
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{{SUBSCRIPTION_ID}}"
 az account list-locations
 az vm list-sizes --location westeurope
-
 ```
 
-## Sources
+## Usage
+
+View the [USAGE.md](USAGE.md) file for how the development teams can use this.
+
+## Todo
+
+View the [TODO.md](TODO.md) for points to improve this project and upgrade the terraform plan.
+
+## Questions
+
+View the [QUESTIONS.md](QUESTIONS.md) to see issues I personally got stuck and would like help to improve the project.
+
+## Useful Links
 
 ### Terraform
 

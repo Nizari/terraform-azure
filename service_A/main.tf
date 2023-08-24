@@ -36,8 +36,8 @@ resource "azurerm_monitor_metric_alert" "queue_alerts" {
   for_each = { for k, v in var.queues_config : k => v if v.alarm != null }
 
   name = "queue-alert-${each.key}"
-  # scopes              = [azurerm_servicebus_queue.queues[each.key].id]
-  scopes = [local.get_namespace_id[each.value.namespace_name]] ##changed to namespace resourceid instead of queue resourceid.
+  // @link https://stackoverflow.com/questions/70278401/error-creating-azurerm-monitor-metric-alert-for-servicebus-on-azure-with-terrafo
+  scopes = [local.get_namespace_id[each.value.namespace_name]]
 
   resource_group_name = local.resource_group_name
   description         = "Queue ${each.key} Message Count Alert"
@@ -47,7 +47,7 @@ resource "azurerm_monitor_metric_alert" "queue_alerts" {
     metric_namespace = "Microsoft.ServiceBus/namespaces"
     metric_name      = each.value.dead_lettering_on_message_expiration ? "DeadletteredMessages" : "Messages"
     aggregation      = "Average"
-    operator      =  each.value.alarm.operator
+    operator         = each.value.alarm.operator
     threshold        = each.value.alarm.message_threshold
 
     dimension {
